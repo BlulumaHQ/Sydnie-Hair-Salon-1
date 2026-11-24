@@ -2,26 +2,21 @@ interface PageHeroProps {
   title: string;
   subtitle?: string;
   image: string;
+  label?: string;
+  accent?: string;
 }
 
-const PageHero = ({ title, subtitle, image }: PageHeroProps) => {
+const PageHero = ({ title, subtitle, image, label, accent }: PageHeroProps) => {
   return (
-    <section className="relative h-[50vh] min-h-[360px] flex items-center overflow-hidden">
-      <img
-        src={image}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-      />
-      <div className="hero-overlay absolute inset-0" />
-      <div className="container-site relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-3" style={{ color: "hsl(0,0%,97%)" }}>
-          {title}
+    <section className="wrap grid items-end gap-8 pb-16 pt-12 md:pb-24 md:pt-16 lg:grid-cols-12">
+      <div className="flex flex-col gap-6 lg:col-span-6">
+        {label && <span className="label">{label}</span>}
+        <h1 className="text-[56px] md:text-[88px] lg:text-[104px]">
+          {title} {accent && <em className="text-champagne">{accent}</em>}
         </h1>
-        {subtitle && (
-          <p className="text-lg font-light text-on-dark-muted max-w-xl">{subtitle}</p>
-        )}
+        {subtitle && <p className="max-w-[460px] text-[17px] leading-relaxed text-smoke">{subtitle}</p>}
       </div>
+      <img src={image} alt="" className="h-[360px] w-full object-cover md:h-[520px] lg:col-span-6" />
     </section>
   );
 };

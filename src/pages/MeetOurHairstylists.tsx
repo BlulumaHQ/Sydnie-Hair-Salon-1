@@ -1,87 +1,50 @@
+import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
-import salonServices from "@/assets/salon-services.jpg";
+import { TEAM } from "@/lib/site";
+import heroImg from "@/assets/hero-salon.jpg";
+import modelImg from "@/assets/hair-model.jpg";
 
-const teamMembers = [
-  {
-    name: "Dianna Thompson",
-    role: "Owner / Stylist",
-    description: "With over 20 years leading Styles Hair Salon, Dianna ensures every client receives the highest level of care and service.",
-  },
-  {
-    name: "Sherri Stout",
-    role: "Stylist",
-    description: "Sherri is dedicated to creating beautiful, customized styles for every client. Gift cards available through Sherri.",
-  },
-  {
-    name: "Toni Weston",
-    role: "Stylist",
-    description: "Toni brings creativity and precision to every appointment. Gift cards available through Toni.",
-  },
-];
+const MeetOurHairstylists = () => (
+  <>
+    <SEO title="Meet Our Stylists | Sydnie Hair Salon & Day Spa" description="Meet the independent stylists, colorists, nail technicians and aesthetician at Sydnie Hair Salon & Day Spa." />
+    <PageHero
+      label="The team"
+      title="Meet the"
+      accent="stylists."
+      subtitle="Independent hair stylists, nail technicians and an aesthetician — talented professionals with personalized service."
+      image={heroImg}
+    />
 
-const MeetOurHairstylists = () => {
-  return (
-    <>
-      <SEO
-        title="Meet Our Hairstylists | Styles Hair Salon and Day Spa"
-        description="Meet the talented team at Styles Hair Salon in Joplin, MO. Ten independent Hair Stylists, Nail Technicians, and an Aesthetician ready to serve you."
-      />
+    <section className="wrap pb-24 md:pb-32">
+      <div className="border-t border-ivory">
+        {TEAM.map((m, i) => (
+          <article key={m.name} className="grid gap-4 border-b border-graphite py-10 md:grid-cols-12 md:items-baseline md:py-12">
+            <span className="serif text-[28px] text-champagne md:col-span-1">{String(i + 1).padStart(2, "0")}</span>
+            <h2 className="text-[40px] md:col-span-5 md:text-[56px]">{m.name}</h2>
+            <span className="label md:col-span-2">{m.role}</span>
+            <p className="text-[15px] leading-relaxed text-smoke md:col-span-4">{m.bio}</p>
+          </article>
+        ))}
+      </div>
+    </section>
 
-      <PageHero
-        title="Meet Our Stylists"
-        subtitle="Styles Hair Salon Has A Great Team"
-        image={salonServices}
-      />
-
-      <section className="section-padding">
-        <div className="container-site">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-              Our Team
-            </p>
-            <h2 className="mb-6">Talented Professionals, Personalized Service</h2>
-            <p className="text-foreground leading-relaxed">
-              Styles Hair Salon is home to ten independent Hair Stylists, Nail Technicians, and an Aesthetician who will customize each service for their clients. Whether it be a haircut, style, manicure, pedicure, facial, or waxing — the design team will ensure that your experience leaves you glowing inside and out.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {teamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="bg-surface rounded-lg p-8 text-center hover:shadow-lg transition-shadow"
-              >
-                <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-5">
-                  <span className="text-2xl font-bold text-primary">
-                    {member.name.charAt(0)}
-                  </span>
-                </div>
-                <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
-                <p className="text-sm text-secondary font-medium mb-3">{member.role}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {member.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 bg-surface-warm rounded-lg p-10 text-center max-w-3xl mx-auto">
-            <h3 className="text-xl font-semibold mb-4">Styles Hair Salon is Hiring!</h3>
-            <p className="text-foreground leading-relaxed mb-4">
-              Styles salon is currently seeking experienced and licensed cosmetologists to join our team. We are a full service hair salon that has been in business over 20 years. We are active in our community and enjoy serving the Joplin area.
-            </p>
-            <p className="text-foreground leading-relaxed">
-              If you feel you would be a good fit for our team, please contact Dianna by calling{" "}
-              <a href="tel:4177826167" className="text-secondary font-medium hover:underline">
-                (417) 782-6167
-              </a>
-            </p>
-          </div>
+    <section className="bg-ivory py-24 text-ink md:py-32">
+      <div className="wrap grid items-center gap-12 lg:grid-cols-2">
+        <div className="flex flex-col gap-6">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-bronze">Careers</span>
+          <h2 className="text-[48px] md:text-[72px]">
+            Sydnie is <em>hiring.</em>
+          </h2>
+          <p className="text-[17px] leading-relaxed text-[#4C4842]">
+            We’re looking for experienced, licensed cosmetologists to join our team. We are a full-service salon, active in our community, and we love what we do.
+          </p>
+          <Link to="/contact-us" className="btn-ink self-start">Get in touch</Link>
         </div>
-      </section>
-    </>
-  );
-};
+        <img src={modelImg} alt="" className="h-[420px] w-full object-cover md:h-[520px]" />
+      </div>
+    </section>
+  </>
+);
 
 export default MeetOurHairstylists;

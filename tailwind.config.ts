@@ -14,9 +14,16 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Manrope', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
       },
       colors: {
+        ink: "#121110",
+        ivory: "#F4F0EA",
+        champagne: "#CDB088",
+        bronze: "#8A7341",
+        smoke: "#BDB6AC",
+        graphite: "#2C2A27",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -15,9 +15,9 @@ const Layout = ({ children }: LayoutProps) => {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-ink text-ivory">
       <Header />
-      <main className="flex-1 pt-20">{children}</main>
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );

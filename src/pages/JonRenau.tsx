@@ -1,59 +1,40 @@
+import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
-import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
-import heroSalon from "@/assets/hero-salon.jpg";
+import modelImg from "@/assets/hair-model.jpg";
 
-const JonRenau = () => {
-  return (
-    <>
-      <SEO
-        title="Jon Renau Wigs & Extensions | Styles Hair Salon and Day Spa"
-        description="Styles Hair Salon in Joplin, MO is proud to offer Jon Renau wigs, hair extensions, additions, and hairpieces. 1,500+ styles available."
-      />
+const items = [
+  { name: "Wigs", description: "Hand-tied and ready-to-wear styles, fitted and finished in the salon." },
+  { name: "Extensions", description: "Seamless added length and volume, color-matched to you." },
+  { name: "Hair additions", description: "Toppers and pieces for targeted volume and coverage." },
+];
 
-      <PageHero
-        title="Jon Renau"
-        subtitle="Premium Wigs & Hair Extensions"
-        image={heroSalon}
-      />
-
-      <section className="section-padding">
-        <div className="container-site">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-                Now Offering
-              </p>
-              <h2 className="mb-6">Jon Renau Collection</h2>
-            </div>
-
-            <div className="prose max-w-none">
-              <p className="text-foreground leading-relaxed mb-6">
-                Celebrated in the industry for their extensive color selection, Jon Renau's portfolio currently features 1,500+ different wig styles, hair extensions, hair additions, hairpieces, headwear, and hair care products, along with their exclusive SmartLace™, SmartLace™ Human Hair, Heat Defiant and toppers collections.
-              </p>
-              <p className="text-foreground leading-relaxed mb-8">
-                Visit us at Styles Hair Salon to explore the full Jon Renau collection. Our experienced team can help you find the perfect style, fit, and color to match your needs.
-              </p>
-            </div>
-
-            <div className="bg-surface rounded-lg p-10 text-center">
-              <h3 className="text-xl font-semibold mb-4">Explore the Collection In-Store</h3>
-              <p className="text-muted-foreground mb-6">
-                Call us to schedule a private consultation with our Jon Renau specialists.
-              </p>
-              <a href="tel:4177826167">
-                <Button variant="cta" size="lg" className="gap-2">
-                  <Phone className="w-4 h-4" />
-                  (417) 782-6167
-                </Button>
-              </a>
-            </div>
-          </div>
+const JonRenau = () => (
+  <>
+    <SEO title="Wigs & Extensions | Sydnie Hair Salon & Day Spa" description="Wigs, hair extensions, additions and hairpieces from the Jon Renau collection at Sydnie Hair Salon — a design case study." />
+    <PageHero
+      label="Jon Renau collection"
+      title="Wigs &"
+      accent="extensions."
+      subtitle="Premium wigs, extensions and hairpieces from Jon Renau — over 1,500 styles to choose from, fitted by our stylists."
+      image={modelImg}
+    />
+    <section className="wrap grid gap-px border border-graphite bg-graphite md:grid-cols-3">
+      {items.map((it, i) => (
+        <div key={it.name} className="flex flex-col gap-3 bg-ink p-10">
+          <span className="serif text-[24px] text-champagne">{String(i + 1).padStart(2, "0")}</span>
+          <h2 className="text-[40px]">{it.name}</h2>
+          <p className="text-[15px] leading-relaxed text-smoke">{it.description}</p>
         </div>
-      </section>
-    </>
-  );
-};
+      ))}
+    </section>
+    <section className="wrap flex flex-col items-start gap-6 py-24 md:py-32">
+      <h2 className="max-w-[820px] text-[44px] md:text-[64px]">
+        Explore the collection <em className="text-champagne">in-store.</em>
+      </h2>
+      <Link to="/contact-us" className="btn-light">Book a fitting</Link>
+    </section>
+  </>
+);
 
 export default JonRenau;

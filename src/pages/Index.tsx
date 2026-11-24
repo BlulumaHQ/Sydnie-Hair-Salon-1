@@ -1,204 +1,133 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
-import { Phone, Scissors, Sparkles, Clock, MapPin, Star } from "lucide-react";
-import heroSalon from "@/assets/hero-salon.jpg";
-import salonServices from "@/assets/salon-services.jpg";
-import heroSpa from "@/assets/hero-spa.jpg";
-import hairModel from "@/assets/hair-model.jpg";
+import OfferBand from "@/components/OfferBand";
+import { SITE } from "@/lib/site";
+import modelImg from "@/assets/hair-model.jpg";
+import cutImg from "@/assets/salon-services.jpg";
+import nailsImg from "@/assets/nail-services.jpg";
+import spaImg from "@/assets/hero-spa.jpg";
+import spaTreatImg from "@/assets/spa-treatment.jpg";
+
+const SERVICES = [
+  { n: "01", label: "Hair", title: "Cutting-edge styles", desc: "Color, cuts and styling that is individually you.", img: cutImg, to: "/hair-salon-services" },
+  { n: "02", label: "Spa", title: "Wellness & relaxation", desc: "Customized treatments for skin, body and mind.", img: spaImg, to: "/spa-services-massages-facials" },
+  { n: "03", label: "Nails", title: "Hands & feet", desc: "Manicures and pedicures, done with care.", img: nailsImg, to: "/hair-salon-services" },
+];
 
 const Index = () => {
   return (
     <>
       <SEO
-        title="Styles Hair Salon and Day Spa | Joplin, MO"
-        description="Styles Hair Salon and Day Spa has been in Joplin, MO for over 20 years. Full service comfort, friendly stylists and a relaxing atmosphere. Call (417) 782-6167."
+        title="Sydnie Hair Salon & Day Spa | Hair, Color & Spa — Design Case Study"
+        description="Sydnie Hair Salon & Day Spa is a fictional salon created as a Bluluma design case study: haircuts, color, styling, extensions, nails and spa treatments in a fashion-editorial design."
       />
 
-      {/* Hero */}
-      <section className="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden">
-        <img
-          src={heroSalon}
-          alt="Styles Hair Salon interior"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
-        <div className="hero-overlay absolute inset-0" />
-        <div className="container-site relative z-10">
-          <p className="text-sm uppercase tracking-[0.3em] font-normal mb-4" style={{ color: "hsl(0,0%,80%)" }}>
-            Joplin's Premier Hair Salon & Day Spa
+      {/* Masthead */}
+      <section className="wrap pt-8">
+        <div className="flex flex-wrap justify-between gap-3 pb-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-smoke">
+          <span>Issue Nº {new Date().getFullYear() - Number(SITE.since)} · Est. {SITE.since}</span>
+          <span>Hair Salon &amp; Day Spa</span>
+        </div>
+        <h1 className="text-center text-[25vw] font-semibold leading-[0.8] tracking-[-0.04em] md:text-[240px] lg:text-[300px]">SYDNIE</h1>
+      </section>
+
+      {/* Cover */}
+      <section className="wrap grid gap-7 pb-24 pt-8 md:pb-32 lg:grid-cols-12">
+        <div className="flex flex-col justify-between gap-8 lg:col-span-3">
+          <p className="serif text-[34px] leading-[1.12]">
+            Relax. Refresh. <em className="text-champagne">Renew.</em>
           </p>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-6" style={{ color: "hsl(0,0%,97%)" }}>
-            Relax. Refresh.
-            <br />
-            Renew.
-          </h1>
-          <p className="text-lg font-light max-w-lg mb-8" style={{ color: "hsl(0,0%,82%)" }}>
-            Your experience at Styles Hair Salon will leave you glowing inside and out.
+          <p className="text-[15px] leading-relaxed text-smoke">
+            Your visit will leave you glowing inside and out. Color, cuts, styling, extensions and spa care — since {SITE.since}.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="tel:4177826167">
-              <Button variant="hero" size="lg" className="gap-2">
-                <Phone className="w-4 h-4" />
-                Book an Appointment
-              </Button>
-            </a>
-            <Link to="/hair-salon-services">
-              <Button variant="heroOutline" size="lg">
-                Our Services
-              </Button>
-            </Link>
+          <Link to="/contact-us" className="btn-gold self-start">Book an Appointment</Link>
+        </div>
+        <img src={modelImg} alt="Model with glossy, styled brunette hair" className="h-[520px] w-full object-cover md:h-[720px] lg:col-span-6" />
+        <div className="flex flex-col gap-7 lg:col-span-3">
+          <img src={cutImg} alt="Stylist finishing a cut" className="h-[300px] w-full object-cover md:h-[380px]" />
+          <div className="flex flex-col gap-3.5 border-t border-graphite pt-5 text-[15px]">
+            <span className="label">In this issue</span>
+            <span>Independent stylists &amp; colorists</span>
+            <span>Nail technicians &amp; aesthetician</span>
+            <span>Wigs, extensions &amp; hairpieces</span>
           </div>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="section-padding bg-surface">
-        <div className="container-site">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-                Over 20 Years of Excellence
-              </p>
-              <h2 className="mb-6">
-                Come See What All The Buzz Is About
-              </h2>
-              <p className="text-foreground leading-relaxed mb-4">
-                Styles Hair Salon and Day Spa has been in Joplin, MO for over 20 years. Owner Dianna Thompson strives to ensure that Styles Hair Salon will change the way you think about hair salons with full service comfort, friendly stylists and a relaxing atmosphere.
-              </p>
-              <p className="text-foreground leading-relaxed mb-8">
-                Styles Hair Salon is home to ten independent Hair Stylists, Nail Technicians, and an Aesthetician who will customize each service for their clients.
-              </p>
-              <Link to="/meet-our-hairstylists">
-                <Button variant="cta" size="lg">
-                  Meet Our Team
-                </Button>
-              </Link>
-            </div>
-            <div className="relative">
-              <img
-                src={hairModel}
-                alt="Beautiful hair styling"
-                className="rounded-lg shadow-xl w-full object-cover aspect-[4/5]"
-                loading="lazy"
-              />
-            </div>
+      {/* Story */}
+      <section className="bg-ivory py-24 text-ink md:py-32">
+        <div className="wrap grid gap-12 lg:grid-cols-2">
+          <div className="flex flex-col gap-6">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-bronze">The story</span>
+            <h2 className="text-[48px] md:text-[72px]">
+              Come see what all the <em>buzz</em> is about.
+            </h2>
+          </div>
+          <div className="flex flex-col gap-6 lg:pt-10">
+            <p className="text-[19px] leading-relaxed">
+              Founder <strong className="font-semibold">Sydnie Laurent</strong> built the salon to change the way you think about hair salons: full-service comfort, friendly stylists and a calm, considered atmosphere.
+            </p>
+            <p className="text-base leading-relaxed text-[#4C4842]">
+              Our independent stylists, nail technicians and aesthetician customize every service — so each visit starts with you.
+            </p>
+            <Link to="/meet-our-hairstylists" className="self-start border-b border-ink pb-1.5 text-xs font-semibold uppercase tracking-[0.2em]">
+              Meet the team
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="section-padding">
-        <div className="container-site">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-              What We Offer
-            </p>
-            <h2>Hair Salon & Spa Services</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Salon Card */}
-            <Link to="/hair-salon-services" className="group relative overflow-hidden rounded-lg aspect-[4/3]">
-              <img
-                src={salonServices}
-                alt="Hair salon services"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="flex items-center gap-2 mb-2">
-                  <Scissors className="w-5 h-5" style={{ color: "hsl(0,0%,90%)" }} />
-                  <p className="text-sm uppercase tracking-widest font-medium" style={{ color: "hsl(0,0%,90%)" }}>Hair Services</p>
-                </div>
-                <h3 className="text-2xl font-bold mb-2" style={{ color: "hsl(0,0%,97%)" }}>Cutting Edge Hair Styles</h3>
-                <p className="text-sm font-light" style={{ color: "hsl(0,0%,80%)" }}>
-                  From hair color and hair cuts to styling, our stylists create a look for all occasions that is "individually you."
-                </p>
+      <section className="wrap py-24 md:py-32">
+        <div className="flex flex-col justify-between gap-4 border-b border-graphite pb-7 md:flex-row md:items-end">
+          <h2 className="text-[48px] md:text-[72px]">
+            The <em className="text-champagne">services</em>
+          </h2>
+          <span className="label !text-smoke">Hair · Spa · Nails</span>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {SERVICES.map((s) => (
+            <Link key={s.n} to={s.to} className="group relative flex h-[520px] items-end overflow-hidden md:h-[600px]">
+              <img src={s.img} alt={s.title} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" />
+              <div className="relative flex flex-col gap-2 p-8">
+                <span className="label">{s.n} — {s.label}</span>
+                <span className="serif text-[36px] leading-[1.05]">{s.title}</span>
+                <span className="text-[15px] text-[#D8D2C8]">{s.desc}</span>
               </div>
             </Link>
-
-            {/* Spa Card */}
-            <Link to="/spa-services-massages-facials" className="group relative overflow-hidden rounded-lg aspect-[4/3]">
-              <img
-                src={heroSpa}
-                alt="Spa services"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-5 h-5" style={{ color: "hsl(0,0%,90%)" }} />
-                  <p className="text-sm uppercase tracking-widest font-medium" style={{ color: "hsl(0,0%,90%)" }}>Spa Services</p>
-                </div>
-                <h3 className="text-2xl font-bold mb-2" style={{ color: "hsl(0,0%,97%)" }}>Wellness & Relaxation</h3>
-                <p className="text-sm font-light" style={{ color: "hsl(0,0%,80%)" }}>
-                  Treat yourself and pamper your skin, body and mind with customized treatments tailored for your specific needs.
-                </p>
-              </div>
-            </Link>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Trust Signals */}
-      <section className="section-padding bg-primary-dark">
-        <div className="container-site">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { icon: Star, label: "#1 Hair Salon in Joplin" },
-              { icon: Clock, label: "Over 20 Years in Business" },
-              { icon: Scissors, label: "10+ Expert Stylists" },
-              { icon: MapPin, label: "Proudly Serving Joplin" },
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center gap-3">
-                <item.icon className="w-7 h-7" style={{ color: "hsl(152, 55%, 50%)" }} />
-                <p className="text-sm font-medium text-on-dark">{item.label}</p>
-              </div>
-            ))}
-          </div>
+      {/* Quote strip */}
+      <section className="border-y border-graphite py-9">
+        <div className="wrap flex flex-wrap justify-center gap-x-10 gap-y-3 text-center">
+          {["Lived-in color", "Precision cuts", "Event styling", "Extensions", "Spa rituals"].map((t, i) => (
+            <span key={t} className="serif text-[24px] italic text-champagne md:text-[34px]">
+              {t}
+              {i < 4 && <span className="ml-10 not-italic text-graphite">/</span>}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* Offer */}
-      <section className="section-padding bg-surface-warm">
-        <div className="container-site text-center max-w-2xl mx-auto">
-          <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-3">
-            Special Offer
+      {/* Spa feature */}
+      <section className="wrap grid items-center gap-12 py-24 md:py-32 lg:grid-cols-2">
+        <img src={spaTreatImg} alt="Stones, oils and towels for a spa treatment" className="h-[420px] w-full object-cover md:h-[560px]" />
+        <div className="flex flex-col gap-6">
+          <span className="label">The day spa</span>
+          <h2 className="text-[48px] md:text-[64px]">
+            Pamper your skin, body <em className="text-champagne">&amp; mind.</em>
+          </h2>
+          <p className="text-[17px] leading-relaxed text-smoke">
+            Facials, massages, body treatments and skin care — each one tailored to what you need that day.
           </p>
-          <h2 className="mb-6">10% Off Your First Service</h2>
-          <p className="text-foreground leading-relaxed mb-8">
-            We'll take 10% off your first salon or spa service when you sign up for our e-Newsletter! Only valid with Toni Weston and Sherri Stout.
-          </p>
-          <a href="tel:4177826167">
-            <Button variant="cta" size="lg" className="gap-2">
-              <Phone className="w-4 h-4" />
-              Call For an Appointment Today
-            </Button>
-          </a>
+          <Link to="/spa-services-massages-facials" className="btn-gold self-start">Explore the spa</Link>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-padding">
-        <div className="container-site text-center max-w-2xl mx-auto">
-          <h2 className="mb-4">Visit Styles Hair Salon Today</h2>
-          <p className="text-foreground leading-relaxed mb-3">
-            608 E 32nd St, Joplin, MO 64804
-          </p>
-          <p className="text-foreground leading-relaxed mb-2">
-            Monday–Friday: 8am–6pm &nbsp;|&nbsp; Saturday: 8am–3pm &nbsp;|&nbsp; Sunday: Closed
-          </p>
-          <p className="text-sm text-muted-foreground mb-8">Appointments available upon request</p>
-          <a href="tel:4177826167">
-            <Button variant="cta" size="lg" className="gap-2">
-              <Phone className="w-4 h-4" />
-              (417) 782-6167
-            </Button>
-          </a>
-        </div>
-      </section>
+      <OfferBand />
     </>
   );
 };
